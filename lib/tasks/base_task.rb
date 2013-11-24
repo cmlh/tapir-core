@@ -23,6 +23,10 @@ module Tasks
       }
     end
 
+    def add_entity(type, attrs)
+      @result[:entities] << { :type => type, :attrs => attrs }
+    end
+
     def raw(output)
       @result[:raw] = output
     end
@@ -36,12 +40,6 @@ module Tasks
         when :error
           @result[:log] << "[-]" << content << "\n"
       end
-    end
-
-
-
-    def add_entity(type, attrs)
-      @result[:entities] << { :type => type, :attrs => attrs }
     end
 
     def to_json(args={})

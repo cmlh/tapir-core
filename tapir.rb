@@ -15,6 +15,7 @@ $:.unshift(File.join(File.expand_path(File.dirname(__FILE__))))
 #require 'lib/core'
 require 'lib/tasks'
 require 'lib/client'
+require 'lib/entities'
 
 class TapirWeb < Sinatra::Base
   register Sinatra::Namespace
