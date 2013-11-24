@@ -17,11 +17,12 @@ module Tapir
 
         # This will set the raw task output and echo the parameter specified by 'echo'
         # 
-        # TODO - Note that this will lead to XSS and you should never trust user input!
+        # TODO - Note that this can lead to XSS and you should never trust user input!
         @result.raw("hey it's a test: #{args['echo']}")
 
       return @result # always return the result
-      end
+
+      end # end run
     end # end ExampleTask
 
     class Example
