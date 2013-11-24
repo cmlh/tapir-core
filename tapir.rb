@@ -1,35 +1,29 @@
+#!/usr/bin/env ruby
+
+###
+### Gem Dependencies
+###
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/contrib'
 require 'snapi'
 
-module Tasks
-  class ExampleTask
-    def self.run(args={})
-      "just an example."
-    end
-  end
+###
+### Tapir-Specific Dependencies
+###
+$:.unshift(File.join(File.expand_path(File.dirname(__FILE__))))
+#require 'lib/core'
+require 'lib/tasks'
+require 'lib/client'
 
-  class Example
-    include Snapi::Capability
-
-    function :run do |fn|
-      fn.argument :blah do |arg|
-        arg.required false
-        arg.type :string
-      end
-
-      fn.return :structured
-    end
-
-    library ExampleTask
-  end
-end
-
-class Tapir < Sinatra::Base
+class TapirWeb < Sinatra::Base
   register Sinatra::Namespace
 
   get '/' do
+    "Hey it works!"
+  end
+
+  get '/admin' do
     redirect 'http://www.youtube.com/watch?v=StChuTW268k'
   end
 

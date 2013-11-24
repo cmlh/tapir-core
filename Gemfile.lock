@@ -1,6 +1,5 @@
-GIT
-  remote: git@github.com:pentestify/snapi.git
-  revision: 9a0a48987a0e2ec24c00561fd70ec14adf50aa56
+PATH
+  remote: /Users/jcran/intrigue/projects/snapi
   specs:
     snapi (0.0.4)
 
