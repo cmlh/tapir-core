@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'sinatra'
 gem 'sinatra-contrib'
 
-gem 'snapi',  :path => "/Users/jcran/intrigue/projects/snapi", :branch => "arguments" #:git => 'git@github.com:pentestify/snapi.git', :branch => "arguments"
+gem 'snapi',  :git => 'git@github.com:pentestify/snapi.git'
 
 gem 'pry'
 
