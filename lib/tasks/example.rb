@@ -13,12 +13,17 @@ module Tapir
         super # always call super
       
         # This will add an entity to the result
-        @result.add_entity( "Entities::TestEntity", { :test_attribute => "test"} )
+        @result.log("Performing task.")
 
-        # This will set the raw task output and echo the parameter specified by 'echo'
-        # 
-        # TODO - Note that this can lead to XSS and you should never trust user input!
-        @result.raw("hey it's a test: #{args['echo']}")
+        #@result.log("Creating an entity.")
+        #@result.add_entity( "Entities::TestEntity", { :test_attribute => "test"} )
+
+        # This will set the raw task output and echo the parameter specified by 'echo' 
+        # TODO - Note that this can lead to XSS and you should never trust user input!        
+        @result.raw("Hey it's a test of raw output: #{args[:echo]}")
+
+        # More logging...
+        @result.log("All done with task run.", :good)
 
       return @result # always return the result
 
@@ -28,7 +33,7 @@ module Tapir
     class Example
       include Snapi::Capability
       function :run do |fn|
-        fn.argument :test do |arg|
+        fn.argument :echo do |arg|
           arg.type :string
           arg.required false
         end

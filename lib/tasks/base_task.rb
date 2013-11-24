@@ -7,6 +7,7 @@ module Tasks
   class BaseTask
     def self.run(args)
       @result = Result.new
+      @result.log("Starting task run.")
     end
   end
 
@@ -17,13 +18,27 @@ module Tasks
     def initialize 
       @result = {
         :entities => [], 
-        :raw => ""
+        :raw => "",
+        :log => ""
       }
     end
 
     def raw(output)
       @result[:raw] = output
     end
+
+    def log(content,demeanor=:normal)
+      case demeanor
+        when :normal
+          @result[:log] << "[_]" << content << "\n"
+        when :good
+          @result[:log] << "[+]" << content << "\n"
+        when :error
+          @result[:log] << "[-]" << content << "\n"
+      end
+    end
+
+
 
     def add_entity(type, attrs)
       @result[:entities] << { :type => type, :attrs => attrs }
