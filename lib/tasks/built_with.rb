@@ -18,9 +18,8 @@ module Tapir
         @result.log("Performing task.")
 
         ##### NEVER NEVER NEVER ALLOW THIS IN PRODUCTION CODE #####
-        x = JSON.load "{\"type\":\"Tapir::Entities::Host\",\"attrs\":{\"name\":\"1.1.1.1\"}}"
+        x = JSON.load args['entity']
         entity = eval(x['type']).new(x['attrs'])
-        puts x.inspect
         ###########################################################
 
         if entity.kind_of? Tapir::Entities::Host
